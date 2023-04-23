@@ -1,7 +1,9 @@
 /* hasta versión 3 interpretación libre 
  hecho sobre labase del ejemplo mostradoanteriormente*/
 /* versión 4: Ejercicio 1 Funciones iniciales 
- se ledejóelsummary y details */
+ se ledejó el summary y details */
+/* versión 5: Ejercicio 2 Funciones iniciales 
+    Se agrega sobre la base del ej 1*/
 
 const miBody    = document.querySelector("body");
 const miSumario = document.querySelector("#mi-sum");
@@ -18,31 +20,36 @@ const linkNro1  = 'https://erick-c3.github.io/Trayecto-de-Programador-/';
 const linkNro2  = 'https://discord.com/'; 
 const linkNro3  = 'https://stackoverflow.com/'; 
 
-let opcIngr     = parseInt(prompt("Ingrese la opción de Contenido Deseada (1 a 3)"));
-
-function AplicaCont (colorfondo, colortxt, img, enlace) {
-    miBody.style.backgroundColor = colorfondo;
-    miBody.style.color = colortxt;
-    miImagen.src       = img;
-    miLink.href        = enlace;
+let nombUsuario = prompt ("Inngrese su Nombre de Usuario" );
+let opcIngr     = parseInt (prompt ("Ingrese la opción de Contenido Deseada (1 a 3)"));
+ 
+function AplicaCont (colorfondo, colortxt, tamfuente, tipofuente, 
+                        img, anchimg, usuario, colorusr, enlace) {
+        miBody.style.backgroundColor = colorfondo;
+        miBody.style.color      = colortxt;
+        miBody.style.fontSize   = tamfuente;
+        miBody.style.fontFamily = tipofuente;
+        miImagen.src            = img;
+        miImagen.style.width    = anchimg;
+        miParraf2.textContent   = "Usuario: "+usuario+"";
+        miParraf2.style.color   = colorusr;
+        miLink.href             = enlace;
 }
 
-miSumario.textContent   = "+++ Ejercio Funciones con Selectores Op = "+opcIngr+" +++";
+miSumario.textContent   = "+++ Ejercio Funciones - Usuario: "+nombUsuario+
+            "/ Opción: "+opcIngr+" +++";
 
-if      (opcIngr == 1){ AplicaCont ("orange", "black", imgNro1, linkNro1); }
-else if (opcIngr == 2){ AplicaCont ("black",  "white", imgNro2, linkNro2); }
-else if (opcIngr == 3){ AplicaCont ("pink" ,  "green", imgNro3, linkNro3); }
-else    { miSumario.textContent   = " OPCIÓN NO VALIDA (ingrese: 1 a 3) ";
-                        AplicaCont ("white", "black", null, null); }
+if (opcIngr == 1){ 
+    AplicaCont ("orange", "black", "15px", "monospace", 
+            imgNro1, "200px", nombUsuario, "red", linkNro1); }
+else if (opcIngr == 2){ 
+    AplicaCont ("black",  "white", "20px", "cursive"  , 
+            imgNro2, "300px", nombUsuario, "violet", linkNro2); }
+else if (opcIngr == 3){ 
+    AplicaCont ("pink",   "green", "30px", "fantasy"  , 
+            imgNro3, "450px", nombUsuario,  "white", linkNro3); }
+else    { miSumario.textContent   = nombUsuario+
+            ": ESA ES UNA OPCIÓN NO VALIDA (ingrese: 1 a 3) ";
+    AplicaCont ("white", "black", "15px", null, null, null, null, null, null); }
 
-
-/*
-miParraf1.textContent   = "Incluyo una Pantalla con Datos (tamaño a justado)";
-miImagen.width          = '320';
-miImagen.height         = '240';
-miImagen.src            = imgNro1;
-miParraf2.textContent  = "Uso este Link para ver el ejercicio ID & Selectores";
-miLink.textContent      = "Enlace_al_Ejercicio_Id_y_Selectores.pdf";
-miLink.href             = 'https://docs.google.com/presentation/d/1lAR2EewB7pa0dDjJaagQYVHA0WDRN_pjQ6rG1N-7Q9I/edit?usp=sharing';
-*/
 
